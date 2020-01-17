@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
+import {AppInsightsService} from '@markpieszak/ng-application-insights';
+import {AppService} from './app.service';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +8,12 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'injectable-is-not-defined-test';
+
+  constructor(
+    private readonly _appInsightService: AppInsightsService,
+    private readonly _appService: AppService
+  ) {
+    console.log(this._appInsightService);
+    this._appService.foo();
+  }
 }
